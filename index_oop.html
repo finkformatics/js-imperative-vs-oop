@@ -5,35 +5,38 @@
     <body>
         <script src="blog_oop.js"></script>
         <script type="text/javascript">
+            // Create two blog instances
             const blog = new Blog();
             const blog2 = new Blog();
-
+            
+            // Add a post to blog2, the oop way
             blog2.add_post(1, 'Alexander Beissel', new Date(), 'This is a blog post', 'Bla bla blubb blubbl di blubb');
 
+            // Add a few posts
             blog.add_post(1, 'Lukas Fink', new Date(), 'My first blog post', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.');
             blog.add_post(2, 'John Doe', new Date(), 'This is another blog post', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.');
 
+            // Log state
             console.log('Post #1', blog.get_post(1));
             console.log('All posts', blog.all_posts());
 
+            // Update a post
             blog.update_post(1, 'My absolutely first blog post');
             console.log('Post #1', blog.get_post(1));
 
+            // Delete a post
             blog.delete_post(2);
             console.log('All posts', blog.all_posts());
 
+            // Add comments
             blog.get_post(1).add_comment('Suelen', 'Yay, what a great post!');
             blog.get_post(1).add_comment('Hammad', 'Wow, I really like that one!');
 
+            // Show post 1
             console.log('Post #1', blog.get_post(1));
 
+            // Show blog2
             console.log(blog2);
-
-            // Problems:
-            // - Second blog?
-            // - Other functions with same name?
-            // - Scope?
-            // - Reliable objects?
         </script>
     </body>
 </html>

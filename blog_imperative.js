@@ -1,15 +1,18 @@
 "use strict";
 
-const posts = {};
+// Holder of blogs
+const blogs = {};
 
-const check_post_exists = function (post_id) {
-    if (!(post_id in posts)) {
+// Helper function to raise an error if post with id does not exist
+const check_post_exists = function (blog, post_id) {
+    if (!(post_id in blog.posts)) {
         throw 404;
     }
 };
 
-const add_post = function (post_id, author, date, title, body) {
-    posts[post_id] = {
+// Adds a new post to a given blog
+const add_post = function (blog, post_id, author, date, title, body) {
+    blog.posts[post_id] = {
         post_id: post_id,
         author: author,
         date: date,
@@ -19,38 +22,42 @@ const add_post = function (post_id, author, date, title, body) {
     };
 };
 
-const get_post = function (post_id) {
-    check_post_exists(post_id);
+// Retrieves a single post by its id
+const get_post = function (blog, post_id) {
+    check_post_exists(blog, post_id);
 
-    return posts[post_id];
+    return blog.posts[post_id];
 };
 
-const all_posts = function () {
-    return posts;
+// Retrieves all posts from a blog
+const all_posts = function (blog) {
+    return blog.posts;
 };
 
-const delete_post = function (post_id) {
-    check_post_exists(post_id);
+// Deletes a post from a blog
+const delete_post = function (blog, post_id) {
+    check_post_exists(blog, post_id);
 
-    delete posts[post_id];
+    delete blog.posts[post_id];
 };
 
-const update_post = function (post_id, title, body) {
-    check_post_exists(post_id);
+// Updates a post in a given blog
+const update_post = function (blog, post_id, title, body) {
+    check_post_exists(blog, post_id);
 
-    if (!!title) {
-        posts[post_id].title = title;
+    // Only change it if set
+    if (title) {
+        blog.posts[post_id].title = title;
     }
 
-    if (!!body) {
-        posts[post_id].body = body;
+    // Only change it if set
+    if (body) {
+        blog.posts[post_id].body = body;
     }
 };
 
-const add_comment = function (post_id, name, comment) {
-    check_post_exists(post_id);
-
-    const post = posts[post_id];
+// Adds a comment to a given post
+const add_comment = function (post, name, comment) {
     post.comments.push({
         name: name,
         comment: comment,

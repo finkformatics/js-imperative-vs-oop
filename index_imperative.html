@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>Blog</title>
+    </head>
+    <body>
+        <script src="blog_imperative.js"></script>
+        <script type="text/javascript">
+            // Calling all the functions in an imperative way, this means, somewhere holding the main data and providing it in every functino call as a parameter
+
+            // Add new blogs
+            blogs.blog = {'posts': {}};
+            blogs.blog2 = {'posts': {}};
+
+            // Add a post to blog 2
+            add_post(blogs.blog2, 1, 'User3', new Date(), 'This is a blog post', 'Bla bla blubb blubbl di blubb');
+
+            // Add a few posts to blog
+            add_post(blogs.blog, 1, 'User1', new Date(), 'My first blog post', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.');
+            add_post(blogs.blog, 2, 'User2', new Date(), 'This is another blog post', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.');
+
+            // Show post 1 and then all posts
+            console.log('Post #1', get_post(blogs.blog, 1));
+            console.log('All posts', all_posts(blogs.blog));
+
+            // Update a post's title and log it
+            update_post(blogs.blog, 1, 'My absolutely first blog post');
+            console.log('Post #1', get_post(blogs.blog, 1));
+
+            // Delete post 2 from blog
+            delete_post(blogs.blog, 2);
+            console.log('All posts', all_posts(blogs.blog));
+
+            // Add two comments to post 1
+            const post1 = get_post(blogs.blog, 1);
+            add_comment(post1, 'Visitor1', 'Yay, what a great post!');
+            add_comment(post1, 'Visitor2', 'Wow, I really like that one!');
+
+            // Log post 1
+            console.log('Post #1', get_post(blogs.blog, 1));
+
+            // Log blog2
+            console.log(blogs.blog2);
+
+            // Problems:
+            // - Other functions with same name?
+            // - Scope?
+            // - Reliable objects?
+        </script>
+    </body>
+</html>
